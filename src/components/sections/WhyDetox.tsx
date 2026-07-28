@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Ear,
   GitMerge,
@@ -59,7 +59,7 @@ export const WhyDetox: React.FC = () => {
         </div>
 
         {/* 10 Value Props Accordion Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           {VALUE_PROPS.map((item, idx) => {
             const isExpanded = expandedId === item.id;
 
@@ -96,38 +96,48 @@ export const WhyDetox: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className={`p-1.5 rounded-lg bg-slate-800 text-slate-400 transition-transform duration-200 ${isExpanded ? 'rotate-180 text-emerald-400' : ''}`}>
+                  <div className={`p-1.5 rounded-lg bg-slate-800 text-slate-400 transition-transform duration-200 shrink-0 ${isExpanded ? 'rotate-180 text-emerald-400' : ''}`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
                 {/* Expanded Breakdown (What it is, Why it matters, User Benefit) */}
-                {isExpanded && (
-                  <div className="px-6 pb-6 pt-2 border-t border-slate-800/60 space-y-4 text-xs sm:text-sm animate-in fade-in duration-200">
-                    <div className="bg-slate-950/70 p-4 rounded-xl border border-slate-800 space-y-3">
-                      <div>
-                        <strong className="text-emerald-400 block text-xs font-semibold uppercase tracking-wider mb-1">
-                          What It Is:
-                        </strong>
-                        <p className="text-slate-300 leading-relaxed">{item.whatItIs}</p>
-                      </div>
+                <AnimatePresence initial={false}>
+                  {isExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6 pt-2 border-t border-slate-800/60 space-y-4 text-xs sm:text-sm">
+                        <div className="bg-slate-950/70 p-4 rounded-xl border border-slate-800 space-y-3">
+                          <div>
+                            <strong className="text-emerald-400 block text-xs font-semibold uppercase tracking-wider mb-1">
+                              What It Is:
+                            </strong>
+                            <p className="text-slate-300 leading-relaxed">{item.whatItIs}</p>
+                          </div>
 
-                      <div>
-                        <strong className="text-purple-400 block text-xs font-semibold uppercase tracking-wider mb-1">
-                          Why It Matters:
-                        </strong>
-                        <p className="text-slate-300 leading-relaxed">{item.whyItMatters}</p>
-                      </div>
+                          <div>
+                            <strong className="text-purple-400 block text-xs font-semibold uppercase tracking-wider mb-1">
+                              Why It Matters:
+                            </strong>
+                            <p className="text-slate-300 leading-relaxed">{item.whyItMatters}</p>
+                          </div>
 
-                      <div>
-                        <strong className="text-teal-300 block text-xs font-semibold uppercase tracking-wider mb-1">
-                          Your Benefit:
-                        </strong>
-                        <p className="text-slate-200 font-medium leading-relaxed">{item.userBenefit}</p>
+                          <div>
+                            <strong className="text-teal-300 block text-xs font-semibold uppercase tracking-wider mb-1">
+                              Your Benefit:
+                            </strong>
+                            <p className="text-slate-200 font-medium leading-relaxed">{item.userBenefit}</p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             );
           })}

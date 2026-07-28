@@ -13,20 +13,15 @@ import { CommunityImpact } from '@/components/sections/CommunityImpact';
 import { FAQAccordion } from '@/components/sections/FAQAccordion';
 import { BookingSection } from '@/components/sections/BookingSection';
 import { SafetyTransparency } from '@/components/sections/SafetyTransparency';
-import { EducationalResources } from '@/components/sections/EducationalResources';
 import { InstagramIntegration } from '@/components/sections/InstagramIntegration';
-import { Newsletter } from '@/components/sections/Newsletter';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 
-import { ResourceDetailModal } from '@/components/modals/ResourceDetailModal';
 import { PrivacyModal } from '@/components/modals/PrivacyModal';
 import { TermsModal } from '@/components/modals/TermsModal';
 import { DisclaimerModal } from '@/components/modals/DisclaimerModal';
 import { ToastContainer, ToastMessage } from '@/components/ui/Toast';
-import { EducationalArticle } from '@/types';
 
 export default function Home() {
-  const [selectedArticle, setSelectedArticle] = useState<EducationalArticle | null>(null);
   const [selectedBookingTopic, setSelectedBookingTopic] = useState<string>('');
   
   const [privacyOpen, setPrivacyOpen] = useState(false);
@@ -104,18 +99,10 @@ export default function Home() {
         {/* Section 10: Safety, Scope & Non-Therapy Transparency */}
         <SafetyTransparency />
 
-        {/* Section 11: Educational Resources & Articles */}
-        <EducationalResources onSelectArticle={(article) => setSelectedArticle(article)} />
-
-        {/* Section 12: Instagram Integration (matching 30590.jpg) */}
+        {/* Section 11: Instagram Integration (matching 30590.jpg) */}
         <InstagramIntegration />
 
-        {/* Section 13: Weekly Mental Clarity Newsletter */}
-        <Newsletter
-          onSuccessToast={(msg) => addToast('Newsletter Subscribed', msg, 'info')}
-        />
-
-        {/* Section 14: Final Reassuring CTA */}
+        {/* Section 12: Final Reassuring CTA */}
         <FinalCTA onOpenBookingModal={() => scrollToBooking()} />
 
       </main>
@@ -128,12 +115,6 @@ export default function Home() {
       />
 
       {/* Interactive Modals */}
-      <ResourceDetailModal
-        article={selectedArticle}
-        onClose={() => setSelectedArticle(null)}
-        onShareToast={(msg) => addToast('Link Copied', msg, 'info')}
-      />
-
       <PrivacyModal isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
       <TermsModal isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
       <DisclaimerModal isOpen={disclaimerOpen} onClose={() => setDisclaimerOpen(false)} />

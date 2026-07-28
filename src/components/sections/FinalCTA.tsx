@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CalendarHeart, BookOpen, Heart } from 'lucide-react';
+import { CalendarHeart, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 
@@ -61,15 +61,6 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBookingModal }) => {
             icon={<CalendarHeart className="w-5 h-5" />}
           >
             Request Your First Conversation
-          </Button>
-
-          <Button
-            variant="secondary"
-            size="lg"
-            href="#resources"
-            icon={<BookOpen className="w-5 h-5" />}
-          >
-            Explore Educational Resources
           </Button>
         </motion.div>
 

@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ShieldCheck, PhoneCall, CheckCircle2, XCircle, HeartPulse } from 'lucide-react';
-import { BRAND } from '@/constants/brand';
+import { ShieldCheck, CheckCircle2, XCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 
 export const SafetyTransparency: React.FC = () => {
@@ -24,7 +23,7 @@ export const SafetyTransparency: React.FC = () => {
         </div>
 
         {/* 2-Column Comparison Grid: What We Provide vs What We Do Not */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* What We Provide */}
           <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-emerald-500/30 space-y-4">
@@ -80,37 +79,6 @@ export const SafetyTransparency: React.FC = () => {
             </ul>
           </div>
 
-        </div>
-
-        {/* Emergency Crisis Hotline Banner */}
-        <div className="bg-rose-950/30 p-6 sm:p-8 rounded-3xl border border-rose-500/40 shadow-xl space-y-6">
-          <div className="flex items-start gap-4">
-            <div className="p-3 rounded-2xl bg-rose-500/20 text-rose-400 shrink-0">
-              <HeartPulse className="w-6 h-6" />
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                Emergency & Immediate Crisis Guidance
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-                If you or someone you know is in immediate risk of self-harm, facing an acute mental health emergency, or requires urgent crisis intervention, please contact free, confidential emergency hotlines immediately:
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-            {BRAND.emergencyHotlines.slice(0, 4).map((hotline, idx) => (
-              <div key={idx} className="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 space-y-1">
-                <span className="text-xs font-semibold text-rose-400 block">{hotline.country}</span>
-                <span className="text-sm font-bold text-white block">{hotline.name}</span>
-                <div className="flex items-center gap-1 text-xs text-emerald-400 font-mono font-bold">
-                  <PhoneCall className="w-3.5 h-3.5" />
-                  <span>{hotline.contact}</span>
-                </div>
-                <span className="text-[10px] text-slate-400 block">{hotline.available}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>

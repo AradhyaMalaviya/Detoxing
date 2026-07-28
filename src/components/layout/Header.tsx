@@ -6,7 +6,6 @@ import { NAV_LINKS, BRAND } from '@/constants/brand';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useTheme } from '@/hooks/useTheme';
 import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
 
 interface HeaderProps {
   onOpenBookingModal?: () => void;
@@ -56,14 +55,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBookingModal }) => {
             <Leaf className="w-5 h-5" />
           </div>
           <div className="flex flex-col">
-            <div className="flex items-center gap-1.5">
-              <span className="text-lg font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">
-                DetoxWithBagga
-              </span>
-              <Badge variant="emerald" className="hidden sm:inline-flex text-[10px] py-0 px-1.5">
-                2 Free Sessions
-              </Badge>
-            </div>
+            <span className="text-lg font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+              DetoxWithBagga
+            </span>
             <span className="text-[11px] text-slate-400 font-medium tracking-wide">
               {BRAND.tagline}
             </span>

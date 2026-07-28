@@ -34,6 +34,5 @@ export const NAV_LINKS = [
   { href: "#topics", label: "Topics" },
   { href: "#why-detox", label: "Why Detox" },
   { href: "#impact", label: "Impact" },
-  { href: "#resources", label: "Resources" },
   { href: "#faq", label: "FAQ" },
 ];
