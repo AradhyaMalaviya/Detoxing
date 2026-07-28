@@ -131,6 +131,19 @@ html.light-mode .glass-panel {
   animation: pulseGlow 4s ease-in-out infinite;
 }
 
+/* Shimmer gradient animation for CTAs */
+@keyframes shimmer {
+  0% { background-position: 200% 50%; }
+  100% { background-position: -200% 50%; }
+}
+
+/* Booking form select styling */
+#request-session select option {
+  background: #111726;
+  color: #f9fafb;
+  padding: 8px 12px;
+}
+
 /* Reduced motion accessibility rules */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
