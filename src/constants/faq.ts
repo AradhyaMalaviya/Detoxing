@@ -44,7 +44,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     id: 'faq-7',
     question: 'How will you contact me to schedule?',
-    answer: 'We contact you via the preference indicated on your form—either via official email (support@detoxwithbagga.com) or direct message on Instagram (@detoxwithbagga). We will never spam you or share your details with any third parties.',
+    answer: 'We contact you via the preference indicated on your form—either via official email (allnewfilespart1@gmail.com) or direct message on Instagram (@detoxwithbagga). We will never spam you or share your details with any third parties.',
     category: 'privacy'
   },
   {

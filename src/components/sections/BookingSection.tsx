@@ -7,7 +7,8 @@ import {
   CheckCircle2,
   Clock,
   Heart,
-  Send
+  Send,
+  Mail
 } from 'lucide-react';
 import { BRAND } from '@/constants/brand';
 import { SessionBookingFormData } from '@/types';
@@ -145,6 +146,13 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
               <span>Open Official Google Form</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
+            <a
+              href={`mailto:${BRAND.email}`}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/30 transition-colors"
+            >
+              <Mail className="w-3.5 h-3.5" />
+              <span>Email: {BRAND.email}</span>
+            </a>
             <span className="text-slate-400 flex items-center gap-1">
               <Clock className="w-3.5 h-3.5 text-emerald-400" /> Response Time &lt; 12 Hours
             </span>
@@ -169,17 +177,29 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                   Session Request Received!
                 </h3>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Thank you, <strong className="text-emerald-400">{formData.fullName}</strong>. Your request has been securely logged. Bagga will personally review your submission and email proposed time slots to <strong className="text-slate-200">{formData.email}</strong> within 12 hours.
+                  Thank you, <strong className="text-emerald-400">{formData.fullName}</strong>. Your request has been securely logged. Bagga will personally review your submission and email proposed time slots to <strong className="text-slate-200">{formData.email}</strong> from <strong className="text-emerald-400">{BRAND.email}</strong> within 12 hours.
                 </p>
               </div>
 
               <div className="p-4 bg-slate-900/80 rounded-2xl border border-slate-800 text-xs text-slate-400 max-w-md mx-auto space-y-1">
                 <p><strong>Booking Ref:</strong> {bookingRef}</p>
+                <p><strong>Official Email:</strong> {BRAND.email}</p>
                 <p><strong>Offer:</strong> Complimentary Session 1 of 2</p>
                 <p><strong>Timezone:</strong> {formData.timezone}</p>
               </div>
 
               <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href={`mailto:${BRAND.email}?subject=${encodeURIComponent(
+                    `Session Request: ${formData.fullName} [Ref: ${bookingRef}]`
+                  )}&body=${encodeURIComponent(
+                    `Hi Bagga,\n\nI would like to confirm my 1-on-1 session request.\n\nName: ${formData.fullName}\nEmail: ${formData.email}\nInstagram: ${formData.instagramHandle || 'N/A'}\nTopics: ${formData.selectedTopics.join(', ')}\nDetails:\n${formData.situationDescription}\n\nBooking Ref: ${bookingRef}`
+                  )}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-md transition-colors"
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>Send Direct Email to {BRAND.email}</span>
+                </a>
                 <Button
                   variant="outline"
                   size="sm"

@@ -53,10 +53,11 @@ export const Footer: React.FC<FooterProps> = ({
               </a>
               <a
                 href={`mailto:${BRAND.email}`}
-                className="w-9 h-9 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-500/50 transition-colors"
-                aria-label="Send Email"
+                className="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center gap-1.5 text-xs text-slate-300 hover:text-emerald-400 hover:border-emerald-500/50 transition-colors"
+                aria-label={`Send Email to ${BRAND.email}`}
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-3.5 h-3.5" />
+                <span>{BRAND.email}</span>
               </a>
               <a
                 href={BRAND.googleFormUrl}
