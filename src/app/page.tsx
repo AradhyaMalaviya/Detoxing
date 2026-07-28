@@ -31,7 +31,7 @@ export default function Home() {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   const addToast = (title: string, message?: string, type: 'success' | 'error' | 'info' = 'success') => {
-    const id = Math.random().toString(36).substr(2, 9);
+    const id = Math.random().toString(36).substring(2, 11);
     setToasts((prev) => [...prev, { id, title, message, type }]);
   };
 

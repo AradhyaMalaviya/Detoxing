@@ -19,7 +19,7 @@ export const trackEvent = ({ action, category, label, value }: AnalyticsEvent) =
     });
   }
   // Console logging in development mode
-  if (process.env.NODE_NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     // console.log(`[Analytics Event] ${category} -> ${action}:`, label);
   }
 };

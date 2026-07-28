@@ -120,7 +120,11 @@ export const TopicsGrid: React.FC<TopicsGridProps> = ({ onSelectTopicForBooking 
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3, delay: idx * 0.05 }}
                 onClick={() => setSelectedTopic(topic)}
-                className="glass-card p-6 rounded-2xl cursor-pointer flex flex-col justify-between group relative overflow-hidden"
+                onKeyDown={(e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedTopic(topic); } }}
+                role="button"
+                tabIndex={0}
+                aria-label={`Explore topic: ${topic.title}`}
+                className="glass-card p-6 rounded-2xl cursor-pointer flex flex-col justify-between group relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">

@@ -85,7 +85,11 @@ export const EducationalResources: React.FC<EducationalResourcesProps> = ({ onSe
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               onClick={() => onSelectArticle(article)}
-              className="glass-card p-6 sm:p-8 rounded-3xl cursor-pointer space-y-4 flex flex-col justify-between group border border-slate-800 hover:border-emerald-500/40"
+              onKeyDown={(e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelectArticle(article); } }}
+              role="button"
+              tabIndex={0}
+              aria-label={`Read guide: ${article.title}`}
+              className="glass-card p-6 sm:p-8 rounded-3xl cursor-pointer space-y-4 flex flex-col justify-between group border border-slate-800 hover:border-emerald-500/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">

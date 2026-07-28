@@ -71,7 +71,7 @@ export const ResourceDetailModal: React.FC<ResourceDetailModalProps> = ({
 
           {article.content.sections.map((sec, idx) => (
             <div key={idx} className="space-y-3 bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white text-emerald-300">
+              <h3 className="text-lg font-bold text-emerald-300">
                 {sec.heading}
               </h3>
               <p className="text-slate-300 leading-relaxed">{sec.body}</p>

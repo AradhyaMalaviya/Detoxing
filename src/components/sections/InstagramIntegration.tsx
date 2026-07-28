@@ -83,7 +83,7 @@ export const InstagramIntegration: React.FC = () => {
                     href={BRAND.googleFormUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-emerald-400 font-semibold hover:underline flex items-center gap-1 inline-flex mt-1"
+                    className="text-emerald-400 font-semibold hover:underline inline-flex items-center gap-1 mt-1"
                   >
                     <span>forms.gle/dtXs8yhF937H4RREA</span>
                     <ExternalLink className="w-3.5 h-3.5" />
