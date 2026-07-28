@@ -2,7 +2,7 @@
 
 ## Overview
 
-The DetoxWithBagga platform integrates both an inline interactive request form and a direct link to the official Google Form (`https://docs.google.com/forms/d/e/1FAIpQLScGxouNqxLN...`) as seen on `@detoxwithbagga` Instagram profile (`30590.jpg`).
+The DetoxWithBagga platform integrates both an inline interactive request form and a direct link to the official Google Form (`https://forms.gle/dtXs8yhF937H4RREA`) as seen on `@detoxwithbagga` Instagram profile (`30590.jpg`).
 
 ---
 

@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     'burnout recovery',
     'complimentary emotional support'
   ],
-  authors: [{ name: 'Bagga', url: 'https://instagram.com/detoxwithbagga' }],
+  authors: [{ name: 'Bagga', url: 'https://www.instagram.com/detoxwithbagga/' }],
   creator: 'DetoxWithBagga',
   publisher: 'DetoxWithBagga',
   metadataBase: new URL('https://detoxwithbagga.com'),

@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CalendarHeart, Heart } from 'lucide-react';
+import { CalendarHeart, Heart, ExternalLink } from 'lucide-react';
+import { InstagramIcon as Instagram } from '@/components/ui/Icons';
+import { BRAND } from '@/constants/brand';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 
@@ -61,6 +63,28 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBookingModal }) => {
             icon={<CalendarHeart className="w-5 h-5" />}
           >
             Request Your First Conversation
+          </Button>
+
+          <Button
+            variant="secondary"
+            size="lg"
+            href={BRAND.googleFormUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            icon={<ExternalLink className="w-5 h-5 text-emerald-400" />}
+          >
+            Open Google Form
+          </Button>
+
+          <Button
+            variant="outline"
+            size="lg"
+            href={BRAND.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            icon={<Instagram className="w-5 h-5 text-pink-400" />}
+          >
+            Connect on Instagram
           </Button>
         </motion.div>
 

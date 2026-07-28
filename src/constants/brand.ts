@@ -5,8 +5,8 @@ export const BRAND = {
   role: "Healthcare Administrator & Emotional Wellness Mentor",
   tagline: "A safe space to be heard.",
   subtitle: "Detox your mind. Reclaim your peace. Honest, supportive 1-on-1 conversations to help you navigate life's emotional challenges with clarity.",
-  googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLScGxouNqxLN_Placeholder/viewform", // Official Google Form URL referenced in reference image 30590.jpg
-  instagramUrl: "https://instagram.com/detoxwithbagga",
+  googleFormUrl: "https://forms.gle/dtXs8yhF937H4RREA",
+  instagramUrl: "https://www.instagram.com/detoxwithbagga/",
   email: "allnewfilespart1@gmail.com",
   readingRecommendation: "Your Mind Matters 💌",
   complimentarySessionsCount: 2,

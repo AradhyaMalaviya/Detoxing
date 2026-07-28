@@ -85,7 +85,7 @@ export const InstagramIntegration: React.FC = () => {
                     rel="noopener noreferrer"
                     className="text-emerald-400 font-semibold hover:underline flex items-center gap-1 inline-flex mt-1"
                   >
-                    <span>docs.google.com/forms/detoxwithbagga</span>
+                    <span>forms.gle/dtXs8yhF937H4RREA</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
