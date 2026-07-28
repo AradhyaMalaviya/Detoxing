@@ -1,65 +1,143 @@
-import Image from "next/image";
+'use client';
+
+import React, { useState } from 'react';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { Hero } from '@/components/sections/Hero';
+import { About } from '@/components/sections/About';
+import { WhoWeHelp } from '@/components/sections/WhoWeHelp';
+import { ProcessTimeline } from '@/components/sections/ProcessTimeline';
+import { TopicsGrid } from '@/components/sections/TopicsGrid';
+import { WhyDetox } from '@/components/sections/WhyDetox';
+import { CommunityImpact } from '@/components/sections/CommunityImpact';
+import { FAQAccordion } from '@/components/sections/FAQAccordion';
+import { BookingSection } from '@/components/sections/BookingSection';
+import { SafetyTransparency } from '@/components/sections/SafetyTransparency';
+import { EducationalResources } from '@/components/sections/EducationalResources';
+import { InstagramIntegration } from '@/components/sections/InstagramIntegration';
+import { Newsletter } from '@/components/sections/Newsletter';
+import { FinalCTA } from '@/components/sections/FinalCTA';
+
+import { ResourceDetailModal } from '@/components/modals/ResourceDetailModal';
+import { PrivacyModal } from '@/components/modals/PrivacyModal';
+import { TermsModal } from '@/components/modals/TermsModal';
+import { DisclaimerModal } from '@/components/modals/DisclaimerModal';
+import { ToastContainer, ToastMessage } from '@/components/ui/Toast';
+import { EducationalArticle } from '@/types';
 
 export default function Home() {
+  const [selectedArticle, setSelectedArticle] = useState<EducationalArticle | null>(null);
+  const [selectedBookingTopic, setSelectedBookingTopic] = useState<string>('');
+  
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [termsOpen, setTermsOpen] = useState(false);
+  const [disclaimerOpen, setDisclaimerOpen] = useState(false);
+
+  const [toasts, setToasts] = useState<ToastMessage[]>([]);
+
+  const addToast = (title: string, message?: string, type: 'success' | 'error' | 'info' = 'success') => {
+    const id = Math.random().toString(36).substr(2, 9);
+    setToasts((prev) => [...prev, { id, title, message, type }]);
+  };
+
+  const removeToast = (id: string) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  };
+
+  const scrollToBooking = (topicTitle?: string) => {
+    if (topicTitle) {
+      setSelectedBookingTopic(topicTitle);
+    }
+    const el = document.getElementById('request-session');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="min-h-screen flex flex-col bg-[#0b0f17] text-slate-100 selection:bg-emerald-500 selection:text-white">
+      
+      {/* Toast Notifications */}
+      <ToastContainer toasts={toasts} onDismiss={removeToast} />
+
+      {/* Main Navigation Header */}
+      <Header onOpenBookingModal={() => scrollToBooking()} />
+
+      {/* Main Landmarked Content */}
+      <main id="main-content" className="flex-1">
+        
+        {/* Section 1: Hero */}
+        <Hero onOpenBookingModal={() => scrollToBooking()} />
+
+        {/* Section 2: About DetoxWithBagga */}
+        <About />
+
+        {/* Section 3: Who We Help */}
+        <WhoWeHelp onOpenBookingModal={() => scrollToBooking()} />
+
+        {/* Section 4: Conversation Process (How It Works) */}
+        <ProcessTimeline onOpenBookingModal={() => scrollToBooking()} />
+
+        {/* Section 5: What We Talk About (16 Topics Grid) */}
+        <TopicsGrid
+          onSelectTopicForBooking={(topicTitle) => {
+            scrollToBooking(topicTitle);
+            addToast('Topic selected!', `Pre-selected "${topicTitle}" for your session request.`);
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        {/* Section 6: Why DetoxWithBagga (10 Value Props) */}
+        <WhyDetox />
+
+        {/* Section 7: Community Impact & Ethical Social Proof */}
+        <CommunityImpact />
+
+        {/* Section 8: Frequently Asked Questions */}
+        <FAQAccordion />
+
+        {/* Section 9: Session Request & Integrated Booking Workflow */}
+        <BookingSection
+          initialTopic={selectedBookingTopic}
+          onSuccessToast={(msg) => addToast('Session Request Submitted', msg, 'success')}
+        />
+
+        {/* Section 10: Safety, Scope & Non-Therapy Transparency */}
+        <SafetyTransparency />
+
+        {/* Section 11: Educational Resources & Articles */}
+        <EducationalResources onSelectArticle={(article) => setSelectedArticle(article)} />
+
+        {/* Section 12: Instagram Integration (matching 30590.jpg) */}
+        <InstagramIntegration />
+
+        {/* Section 13: Weekly Mental Clarity Newsletter */}
+        <Newsletter
+          onSuccessToast={(msg) => addToast('Newsletter Subscribed', msg, 'info')}
+        />
+
+        {/* Section 14: Final Reassuring CTA */}
+        <FinalCTA onOpenBookingModal={() => scrollToBooking()} />
+
       </main>
+
+      {/* Footer */}
+      <Footer
+        onOpenPrivacy={() => setPrivacyOpen(true)}
+        onOpenTerms={() => setTermsOpen(true)}
+        onOpenDisclaimer={() => setDisclaimerOpen(true)}
+      />
+
+      {/* Interactive Modals */}
+      <ResourceDetailModal
+        article={selectedArticle}
+        onClose={() => setSelectedArticle(null)}
+        onShareToast={(msg) => addToast('Link Copied', msg, 'info')}
+      />
+
+      <PrivacyModal isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
+      <TermsModal isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
+      <DisclaimerModal isOpen={disclaimerOpen} onClose={() => setDisclaimerOpen(false)} />
+
     </div>
   );
 }
